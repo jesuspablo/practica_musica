@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<openerp>
+  <data>
+    <record id="view_song_form" model="ir.ui.view">
+        <field name="name">view.song.form</field>
+        <field name="model">musica.song</field>
+        <field name="arch" type="xml">
+          <form string="Canciones">
+              <sheet>
+                   <h1>
+                       <field name="name" default_focus="1" placeholder="Name"/>
+                   </h1>
+                  <h1 class="oe_secondary_menu_section">
+                        <label string="Datos de la canción" />
+                    </h1>
+                  <group name="Datos de la canción">
+                      <field name="titulo" />
+                      <field name="duracion" />
+                      <field name="fecha_creacion" />
+                      <field name="tipo" />
+                      <field name="author_song_id" />
+                  </group>
+                  <notebook>
+                      <page String="Discos">
+                          <field name="disk_song_ids" />
+                      </page>
+                  </notebook>
+              </sheet>
+          </form>
+        </field>
+      </record>
+
+    <record id="view_song_tree" model="ir.ui.view">
+        <field name="name">view.song.tree</field>
+        <field name="model">musica.song</field>
+        <field name="arch" type="xml">
+            <tree string="Song">
+                <field name="name" />
+                <field name="titulo" />
+                <field name="duracion" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_song_search" model="ir.ui.view">
+        <field name="name">view.song.search</field>
+        <field name="model">musica.song</field>
+        <field name="arch" type="xml">
+            <search string="Song">
+                <field name="name" />
+                <group string="Group By" name="Song">
+                    <filter name="name" string="song"
+                        context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="song_action" model="ir.actions.act_window">
+      <field name="name">Song</field>
+      <field name="res_model">musica.song</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+              Click to create a new label.
+          </p>
+          <p>
+              help
+          </p>
+      </field>
+    </record>
+
+
+    <menuitem
+               id="song_menu"
+               name="song"
+               parent="submenu_musica"
+               sequence="2"
+               action="song_action"
+           />
+  </data>
+</openerp>

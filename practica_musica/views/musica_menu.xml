@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <menuitem id="practicas_caseras" name="Practicas" sequence="2"/>
+    <menuitem id="submenu_musica" name="Colección de canciones" parent="practicas_caseras" sequence="2"/>
+
+  </data>
+</openerp>

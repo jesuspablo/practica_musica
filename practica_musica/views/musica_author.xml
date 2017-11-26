@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<openerp>
+  <data>
+    <record id="view_author_form" model="ir.ui.view">
+        <field name="name">view.author.form</field>
+        <field name="model">musica.author</field>
+        <field name="arch" type="xml">
+          <form string="Author">
+              <sheet>
+                  <field name="image" widget="image" class="oe_left oe_avatar"/>
+                  <div class="oe_title oe_left">
+                      <h1>
+                        <field name="name" default_focus="1" placeholder="Name"/>
+                      </h1>
+                  </div>
+                  <div>
+                      <h1 class="oe_secondary_menu_section">
+                            <label string="Datos del Autor" />
+                      </h1>
+                  </div>
+                  <group name="Datos del autor">
+                      <field name="ciudad_natal" />
+                      <field name="edad" />
+                      <field name="sexo" />
+                  </group>
+                  <notebook>
+                      <page string="Canciones">
+                          <field name="song_author_ids"/>
+                      </page>
+                      <page string="Discos">
+                          <field name="disk_author_ids"/>
+                      </page>
+                  </notebook>
+              </sheet>
+          </form>
+        </field>
+      </record>
+
+    <record id="view_author_tree" model="ir.ui.view">
+        <field name="name">view.author.tree</field>
+        <field name="model">musica.author</field>
+        <field name="arch" type="xml">
+            <tree string="Author">
+                <field name="name" />
+                <field name="ciudad_natal" />
+                 <field name="edad" />
+                 <field name="sexo" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_author_search" model="ir.ui.view">
+        <field name="name">view.author.search</field>
+        <field name="model">musica.author</field>
+        <field name="arch" type="xml">
+            <search string="Author">
+                <field name="name" />
+                <group string="Group By" name="Author">
+                    <filter name="name" string="Author"
+                        context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="author_action" model="ir.actions.act_window">
+      <field name="name">Author</field>
+      <field name="res_model">musica.author</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+              Click to create a new label.
+          </p>
+          <p>
+              help
+          </p>
+      </field>
+    </record>
+
+
+    <menuitem
+               id="author_menu"
+               name="Author"
+               parent="submenu_musica"
+               sequence="2"
+               action="author_action"
+           />
+
+  </data>
+</openerp>

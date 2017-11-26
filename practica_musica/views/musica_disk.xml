@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<openerp>
+  <data>
+    <record id="view_disk_form" model="ir.ui.view">
+        <field name="name">view.disk.form</field>
+        <field name="model">musica.disk</field>
+        <field name="arch" type="xml">
+          <form string="Discos">
+              <sheet>
+                    <h1 class="oe_secondary_menu_section">
+                        <label string="Datos del disco" />
+                    </h1>
+                  <group>
+                      <group name="Datos del disco">
+                          <field name="name" />
+                          <field name="fecha_publicacion" />
+                          <field name="puntuacion" />
+                      </group>
+                      <group>
+                          <field name="description" />
+                      </group>
+                  </group>
+                  <notebook>
+                      <page string="Canciones">
+                        <field name="song_disk_ids" />
+                      </page>
+                      <page string="Autores">
+                        <field name="author_disk_ids" />
+                      </page>
+                  </notebook>
+              </sheet>
+          </form>
+        </field>
+      </record>
+
+    <record id="view_disk_tree" model="ir.ui.view">
+        <field name="name">view.disk.tree</field>
+        <field name="model">musica.disk</field>
+        <field name="arch" type="xml">
+            <tree string="Disk">
+                <field name="name" />
+                <field name="fecha_publicacion" />
+                <field name="puntuacion" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_disk_search" model="ir.ui.view">
+        <field name="name">view.disk.search</field>
+        <field name="model">musica.disk</field>
+        <field name="arch" type="xml">
+            <search string="Disk">
+                <field name="name" />
+                <group string="Group By" name="Disk">
+                    <filter name="name" string="Disk"
+                        context="{'group_by': 'name'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="disk_action" model="ir.actions.act_window">
+      <field name="name">Disk</field>
+      <field name="res_model">musica.disk</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+              Click to create a new label.
+          </p>
+          <p>
+              help
+          </p>
+      </field>
+    </record>
+
+
+    <menuitem
+               id="disk_menu"
+               name="Disk"
+               parent="submenu_musica"
+               sequence="2"
+               action="disk_action"
+           />
+  </data>
+</openerp>
